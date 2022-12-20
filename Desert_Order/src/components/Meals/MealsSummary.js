@@ -3,14 +3,12 @@ import classes from './MealsSummary.module.css';
 const MealsSummary = () => {
   return (
     <section className={classes.summary}>
-      <h2>Delicious Food, Delivered To You</h2>
+      <h2>Sweet you crave, Delivered To You</h2>
       <p>
-        Choose your favorite meal from our broad selection of available meals
-        and enjoy a delicious lunch or dinner at home.
+      Welcome to our online dessert shop! We offer a wide variety of delicious, handmade desserts that are sure to satisfy any sweet tooth. From creamy cheesecakes and rich chocolate brownies to fluffy cupcakes and moist layer cakes, we have something for everyone.
       </p>
       <p>
-        All our meals are cooked with high-quality ingredients, just-in-time and
-        of course by experienced chefs!
+      Our desserts are made with the freshest ingredients and are always baked to perfection. We pride ourselves on providing top-notch customer service and fast, reliable shipping.
       </p>
     </section>
   );
