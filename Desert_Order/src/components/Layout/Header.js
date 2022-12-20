@@ -7,7 +7,7 @@ const Header = (props)=>
     return(
         <Fragment>
             <header className={classes.header}>
-                <h1>Reactmeals</h1>
+                <h1>Desert</h1>
                 <HeaderCartButton modal={props.modal} />
             </header>
             <div className={classes['main-image']}>
