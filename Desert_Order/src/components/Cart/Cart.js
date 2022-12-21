@@ -1,9 +1,11 @@
 import classes from './Cart.module.css';
 import Modal from '../UI/Modal.js';
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import CartContext from '../Store/card-context';
 import CartItem from './CartItem';
+import Checkout from './Checkout';
 const Cart = (props) => {
+    const [onOrder, setonOrder] = useState(false);
     const cartctx = useContext(CartContext);
     const totalAmount = `$${cartctx.totalAmount.toFixed(2)}`;
     const hasitems = cartctx.items.length > 0;
@@ -18,6 +20,10 @@ const Cart = (props) => {
     key={item.id} name={item.name} amount={item.amount} price={item.price} 
     onRemove={cartItemRemoveHandler.bind(null, item)}
           onAdd={cartItemAddHandler.bind(null, item)} ></CartItem>)}</ul>;
+          const onorder =()=>
+          {
+              setonOrder(true);
+          }
   return (
     <Modal closemodal={props.closemodal}>
         {CartItems}
@@ -25,10 +31,11 @@ const Cart = (props) => {
             <span>Total Amount</span>
             <span>{totalAmount}</span>
         </div>
-        <div className={classes.actions} >
+        {onOrder && <Checkout onCancel={props.closemodal}/>}
+        {!onOrder && <div className={classes.actions} >
             <button className={classes['button--alt']} onClick={props.closemodal} >Close</button>
-            {hasitems && <button className={classes.button}>Order</button>}
-        </div>
+            {hasitems && <button className={classes.button} onClick={onorder} >Order</button>}
+        </div>}
     </Modal>
   )
 }
