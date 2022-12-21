@@ -47,9 +47,7 @@ async function getdesertfromdb() {
       }
       console.log(DUMMY_MEAL);
       setdummymeal(DUMMY_MEAL);
-      setTimeout(() => {
-        setloading(false);
-      },1000);
+      setloading(false);
 }
 useEffect(() => {
   getdesertfromdb();
