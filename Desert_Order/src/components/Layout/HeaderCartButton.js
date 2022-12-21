@@ -1,9 +1,12 @@
 import React,{ useContext, useEffect, useState } from "react";
+// import { useMediaQuery } from 'react-responsive';
 import CartIcon from '../Cart/CartIcon';
 import CartContext from "../Store/card-context";
 import classes from './HeaderCartButton.module.css';
 const HeaderCartButton =(props)=>
 {
+    // const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+    // console.log(isMobile);
     const [btnishighlighted, setbtnishighlighted] = useState(false);
     const cartctx = useContext(CartContext);
     const { items } = cartctx;
@@ -28,10 +31,11 @@ const HeaderCartButton =(props)=>
     }, [items,cartctx.items.length]);
     return(
         <button className={btnClasses} onClick={props.modal}>
-            <span className={classes.icon}> 
+            <span className={classes.icon} > 
                 <CartIcon/>
             </span>
-            <span>Your Cart</span>
+            {/* {!isMobile && <span >Your Cart</span>} */}
+            <span >Your Cart</span>
             <span className={classes.badge}>{numberofcartitems}</span>
         </button>
     );

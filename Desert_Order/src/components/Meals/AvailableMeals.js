@@ -64,8 +64,8 @@ useEffect(() => {
   return (
     <section className={classes.meals}>
       <Card>
-        {!loading && <ul>{Mealslist}</ul>}
-        {loading && <center><Loader/></center>}
+        {loading && <ul>{Mealslist}</ul>}
+        {!loading && <center><Loader/></center>}
       </Card>
     </section>
   );
