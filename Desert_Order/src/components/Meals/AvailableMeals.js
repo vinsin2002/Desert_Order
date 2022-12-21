@@ -34,24 +34,38 @@ const AvailableMeals = () => {
   let DUMMY_MEAL = [];
 const [DUMMY_MEALS, setdummymeal] = useState([]);
 const [loading, setloading] = useState(false);
+const [haderror, sethaderror] = useState(false);
+const [errmess, seterrmess] = useState("Sorry server error!");
 async function getdesertfromdb() {
   setloading(true);
-   const response = await axios.get("https://desert-order-default-rtdb.asia-southeast1.firebasedatabase.app/deserts.json");
+  try
+  {
+   const response = await axios.get("https://desert-order-default-rtdb.asia-southeast1.firebasedatabase.app/deserts.jso",{
+    timeout: 1000
+   });
       const data = await response.data;
       for (const key in data) {
         // console.log(key);
         for (let i in data[key]) {
-          console.log(data[key][i].describe)
+          // console.log(data[key][i].describe)
           DUMMY_MEAL.push(data[key][i]);
         }
       }
-      console.log(DUMMY_MEAL);
+      // console.log(DUMMY_MEAL);
       setdummymeal(DUMMY_MEAL);
       setloading(false);
+  }
+  catch(error)
+  {
+    console.log(error.message);
+    seterrmess(error.message+"!");
+    sethaderror(true);
+    setloading(false);
+  }
 }
 useEffect(() => {
-  getdesertfromdb();
-}, []);
+    getdesertfromdb();
+},[]);
   const Mealslist = DUMMY_MEALS.map((meal) => (
     <MealItem
       key={meal.id}
@@ -66,6 +80,7 @@ useEffect(() => {
       <Card>
         {!loading && <ul>{Mealslist}</ul>}
         {loading && <center><Loader/></center>}
+        {haderror && <center><h3 style={{color: "red"}}>{errmess}</h3></center>}
       </Card>
     </section>
   );
