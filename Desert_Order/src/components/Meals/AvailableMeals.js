@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from "react";
 import classes from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";
+import Loader from "./Loader";
 import Card from "../UI/Card";
 import axios from "axios";
 // const DUMMY_MEALS = [
@@ -32,7 +33,9 @@ import axios from "axios";
 const AvailableMeals = () => {
   let DUMMY_MEAL = [];
 const [DUMMY_MEALS, setdummymeal] = useState([]);
+const [loading, setloading] = useState(false);
 async function getdesertfromdb() {
+  setloading(true);
    const response = await axios.get("https://desert-order-default-rtdb.asia-southeast1.firebasedatabase.app/deserts.json");
       const data = await response.data;
       for (const key in data) {
@@ -44,6 +47,9 @@ async function getdesertfromdb() {
       }
       console.log(DUMMY_MEAL);
       setdummymeal(DUMMY_MEAL);
+      setTimeout(() => {
+        setloading(false);
+      },1000);
 }
 useEffect(() => {
   getdesertfromdb();
@@ -60,7 +66,8 @@ useEffect(() => {
   return (
     <section className={classes.meals}>
       <Card>
-        <ul>{Mealslist}</ul>
+        {!loading && <ul>{Mealslist}</ul>}
+        {loading && <center><Loader/></center>}
       </Card>
     </section>
   );
