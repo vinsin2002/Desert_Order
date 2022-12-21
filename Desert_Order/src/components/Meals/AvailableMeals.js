@@ -40,7 +40,7 @@ async function getdesertfromdb() {
   setloading(true);
   try
   {
-   const response = await axios.get("https://desert-order-default-rtdb.asia-southeast1.firebasedatabase.app/deserts.jso",{
+   const response = await axios.get("https://desert-order-default-rtdb.asia-southeast1.firebasedatabase.app/deserts.json",{
     timeout: 1000
    });
       const data = await response.data;
