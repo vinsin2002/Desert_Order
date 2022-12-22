@@ -33,6 +33,7 @@ const Cart = (props) => {
           }
           const onsubmithandler =async (userdata)=>
           {
+            userdata.amount = totalAmount;
             setuserinfo(userdata);
             setissubmitting(true);
             console.log(userdata);
@@ -65,7 +66,7 @@ const Cart = (props) => {
             <h3>For shopping with us</h3>
             <img src={checkedgif} alt="checked" />
             <h2>Order Placed </h2>
-            <h2>Amount paid : {totalAmount}</h2>
+            <h2>Amount paid : {userinfo.amount}</h2>
             <p>Order ID: {orderid}</p>
             <p>Name: {userinfo.name}</p>
             <p>Street: {userinfo.street}</p>
