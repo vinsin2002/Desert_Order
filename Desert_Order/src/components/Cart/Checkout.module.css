@@ -54,15 +54,22 @@
   .actions .submit:active {
     background-color: #344e70;
   }
-  
-  .invalid label {
-    color: #ca3e51;
-  }
-  
-  .invalid input {
-    border-color: #aa0b20;
-    background-color: #ffeff1;
-  }
+  .invalid input
+    {
+      font: inherit;
+      border: 1px solid #aa0b20;
+      border-radius: 4px;
+      height: 2rem;
+      max-width: 100%;
+      width: 19rem;
+    }
+    .invalid label
+    {
+      color: #ca3e51;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
   @media only screen and (max-width: 700px)
   {
     .form
@@ -74,5 +81,21 @@
     .control input
     {
       width: 19rem;
+    }
+    .invalid input
+    {
+      font: inherit;
+      border: 1px solid #aa0b20;
+      border-radius: 4px;
+      height: 2rem;
+      max-width: 100%;
+      width: 19rem;
+    }
+    .invalid label
+    {
+      color: #ca3e51;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+      display: block;
     }
   }

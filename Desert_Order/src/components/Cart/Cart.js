@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react'
 import CartContext from '../Store/card-context';
 import CartItem from './CartItem';
 import Checkout from './Checkout';
+import axios from "axios";
 const Cart = (props) => {
     const [onOrder, setonOrder] = useState(false);
     const cartctx = useContext(CartContext);
@@ -24,6 +25,14 @@ const Cart = (props) => {
           {
               setonOrder(true);
           }
+          const onsubmithandler =(userdata)=>
+          {
+            console.log(userdata);
+            axios.post('https://desert-order-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json', {
+              UserData: userdata,
+              OrderedItems: cartctx.items
+            })
+          }
   return (
     <Modal closemodal={props.closemodal}>
         {CartItems}
@@ -31,7 +40,7 @@ const Cart = (props) => {
             <span>Total Amount</span>
             <span>{totalAmount}</span>
         </div>
-        {onOrder && <Checkout onCancel={props.closemodal}/>}
+        {onOrder && <Checkout onCancel={props.closemodal} onConfirm={onsubmithandler} />}
         {!onOrder && <div className={classes.actions} >
             <button className={classes['button--alt']} onClick={props.closemodal} >Close</button>
             {hasitems && <button className={classes.button} onClick={onorder} >Order</button>}
