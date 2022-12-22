@@ -2,10 +2,10 @@ import classes from './Checkout.module.css';
 import { useFormik} from 'formik';
 import { schema } from '../../schemas';
 const initialValues = {
-  name: " ",
-  street: " ",
-  postal: " ",
-  city: " ",
+  name: "",
+  street: "",
+  postal: "",
+  city: "",
 };
 const Checkout = (props) => {
   const {values,errors,touched,handleBlur,handleChange,handleSubmit} = useFormik({
@@ -23,22 +23,25 @@ const Checkout = (props) => {
   let cansubmit = true;
   if(touched.name)
   {
-    if(errors.name || values.name === " ") {n = classes.invalid; cansubmit = false;}
+    if(errors.name || values.name === "") {n = classes.invalid; cansubmit = false;}
   }
-  else {cansubmit = false;}
   if(touched.street)
   {
-    if(errors.street || values.street === " ") {s = classes.invalid; cansubmit= false;}
-  } else {cansubmit = false;}
+    if(errors.street || values.street === "") {s = classes.invalid; cansubmit= false;}
+  } 
   if(errors.postal && touched.postal)
   {
     p = classes.invalid;
     cansubmit = false;
-  } else {cansubmit = false;}
+  } 
   if(touched.city)
   {
-    if(errors.city || values.city === " ") {c = classes.invalid;cansubmit = false;}
-  } else {cansubmit = false;}
+    if(errors.city || values.city === "") {c = classes.invalid;cansubmit = false;}
+  }
+  if(values.name === "" || values.city === "" || values.postal === "" || values.street === "")
+  {
+    cansubmit = false;
+  }
   // console.log(cansubmit);
   const sumbithandler =(event)=>
   {
