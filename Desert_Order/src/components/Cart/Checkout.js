@@ -25,19 +25,20 @@ const Checkout = (props) => {
   {
     if(errors.name || values.name === " ") {n = classes.invalid; cansubmit = false;}
   }
+  else {cansubmit = false;}
   if(touched.street)
   {
     if(errors.street || values.street === " ") {s = classes.invalid; cansubmit= false;}
-  }
+  } else {cansubmit = false;}
   if(errors.postal && touched.postal)
   {
     p = classes.invalid;
     cansubmit = false;
-  }
+  } else {cansubmit = false;}
   if(touched.city)
   {
     if(errors.city || values.city === " ") {c = classes.invalid;cansubmit = false;}
-  }
+  } else {cansubmit = false;}
   // console.log(cansubmit);
   const sumbithandler =(event)=>
   {
