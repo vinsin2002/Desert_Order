@@ -37,7 +37,7 @@ const Cart = (props) => {
             setuserinfo(userdata);
             setissubmitting(true);
             console.log(userdata);
-            const response = await axios.post('https://desert-order-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json', {
+            const response = await axios.post('https://desert-backend-default-rtdb.firebaseio.com/orders.json', {
               UserData: userdata,
               OrderedItems: cartctx.items
             })
