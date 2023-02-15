@@ -41,7 +41,7 @@ async function getdesertfromdb() {
   try
   {
    const response = await axios.get("https://desert-backend-default-rtdb.firebaseio.com//deserts.json",{
-    timeout: 1000
+    timeout: 3000
    });
       const data = await response.data;
       for (const key in data) {
